@@ -1,0 +1,144 @@
+{
+  "restaurant": {
+    "name": "El Caballero Negro",
+    "tagline": "Pastas - Pizzas",
+    "welcome": "Bienvenidos a nuestra mesa",
+    "description": [
+      "Fusión de tradición italiana con el sabor peruano.",
+      "Recetas que nos acompañan desde hace años y nuevas creaciones que llegan para quedarse."
+    ],
+    "currency": "S/."
+  },
+  "categories": [
+    {
+      "id": "entrantes",
+      "name": "Entrantes",
+      "items": [
+        { "id": "pan-al-ajo", "name": "Pan al Ajo", "description": "Receta de antaño que nos acompaña desde nuestros inicios.", "price": 11 },
+        { "id": "crostinis-especiales", "name": "Crostinis Especiales", "description": "Nuestra receta más emblemática, preparada con abundante queso mozzarella y tocino, manteniendo el sabor que nos acompaña desde hace más de una década.", "price": 21 },
+        { "id": "confitura-y-queso", "name": "Confitura & Queso", "description": "Crujientes tostadas artesanales acompañadas de confitura de tomate y queso semi-curado. Una combinación perfecta de sabores dulces, salados y cremosos para compartir.", "price": 14 },
+        { "id": "focaccia", "name": "Focaccia", "description": "Focaccia artesanal de masa esponjosa y corteza dorada, cubierta con mozzarella fundida, aceitunas verdes y tomates cherry frescos.", "price": 13 }
+      ]
+    },
+    {
+      "id": "aires-frescos",
+      "name": "Aires Frescos",
+      "items": [
+        { "id": "cesar-el-caballero", "name": "César El Caballero", "description": "Lechuga romana, choclo desgranado, crutones, queso parmesano, pechuga de pollo al grill y nuestra salsa original César.", "price": 32 },
+        { "id": "mediterraneo-fresco-de-lomo", "name": "Mediterráneo Fresco de Lomo", "description": "Mix de hojas, cebolla blanca, tomate cherry, queso parmesano, palta, trozos de lomo al grill y salsa de mostaza y limón.", "price": 34 },
+        { "id": "altos-andes", "name": "Altos Andes", "description": "Mix de hojas, quinua tricolor, palta, tomate cherry, queso fresco, choclo desgranado y salsa de guacatay.", "price": 32 }
+      ]
+    },
+    {
+      "id": "pastas-especiales",
+      "name": "Pastas Especiales",
+      "items": [
+        { "id": "alfredo-especial", "name": "Alfredo Especial", "description": "Fetuccini en nuestra cremosa salsa Alfredo acompañado de lomito ahumado, tocino crocante, champiñones salteados, pecanas tostadas y pasas rubias.", "price": 39 },
+        { "id": "el-elegido-del-caballero", "name": "El Elegido del Caballero", "description": "Poker de cuatro pastas acompañado de la proteína de tu elección.", "price": 76, "highlight": true },
+        { "id": "espaguetis-a-la-diabla", "name": "Espaguetis a la Diabla", "description": "Espaguetis bañados con crema a la huancaína de rocoto, ligeramente picante, acompañados por la proteína de tu elección.", "price": 51 },
+        { "id": "noquis-en-salsa-pesto-alfredo", "name": "Ñoquis en Salsa Pesto Alfredo", "description": "Delicados ñoquis bañados en una cremosa combinación de salsa pesto y Alfredo, acompañados de milanesa o bife angosto.", "price": 44 },
+        { "id": "noquis-con-lomo-saltado", "name": "Ñoquis con Lomo Saltado", "description": "Suaves ñoquis acompañados de nuestro tradicional lomo saltado.", "price": 46 },
+        { "id": "ravioles-artesanales-en-salsa-alfredo", "name": "Ravioles Artesanales en Salsa Alfredo", "description": "Ravioles artesanales rellenos de carne, bañados en nuestra cremosa salsa Alfredo.", "price": 36 },
+        { "id": "ravioles-artesanales-a-la-bolognesa", "name": "Ravioles Artesanales a la Bolognesa", "description": "Ravioles artesanales rellenos de carne, bañados en salsa bolognesa y coronados con albóndigas artesanales.", "price": 41 },
+        { "id": "putanesca", "name": "Putanesca", "description": "Canutos bañados en salsa pomodoro, albahaca fresca, aceitunas negras y tomates cherry.", "price": 38 }
+      ]
+    },
+    {
+      "id": "clasicos-del-caballero",
+      "name": "Clásicos del Caballero",
+      "note": {
+        "title": "Proteínas disponibles",
+        "options": ["Milanesa", "Chuleta ahumada", "Pollo a la plancha", "Lomo saltado", "Lomo fino", "Bife angosto", "Picaña"]
+      },
+      "items": [
+        { "id": "huancaina-con-lomo-saltado", "name": "Huancaína con Lomo Saltado", "description": "Fetuccini en salsa huancaína acompañado de jugosos trozos de lomo salteado.", "price": 48 },
+        { "id": "fetuccini-al-alfredo", "name": "Fetuccini al Alfredo", "description": "Fetuccini en nuestra cremosa salsa Alfredo.", "price": 34 },
+        { "id": "espaguetis-a-la-bolognesa", "name": "Espaguetis a la Bolognesa", "description": "Espaguetis bañados en nuestra tradicional salsa bolognesa de cocción lenta, acompañados de albóndigas artesanales.", "price": 46 },
+        { "id": "canuto-en-salsa-de-champinones", "name": "Canuto en Salsa de Champiñones", "description": "Canutos bañados en una delicada salsa cremosa de champiñones y pollo.", "price": 49 },
+        { "id": "fetuccini-al-pesto", "name": "Fetuccini al Pesto", "description": "Fetuccini en salsa al pesto, acompañado con milanesa o bife angosto.", "price": 49 },
+        { "id": "espaguetis-a-la-arrabbiata", "name": "Espaguetis a la Arrabbiata", "description": "Espaguetis en salsa de tomate, ajo, ají y un ligero toque picante, acompañados con langostinos flambeados.", "price": 49 }
+      ]
+    },
+    {
+      "id": "infaltables",
+      "name": "Infaltables",
+      "items": [
+        { "id": "lomo-saltado", "name": "Lomo Saltado", "description": "Jugosos cortes de lomo salteados al wok con cebolla, tomate y papas fritas, acompañados de arroz.", "price": 49 },
+        { "id": "bistec-a-lo-pobre", "name": "Bistec a lo Pobre", "description": "Lomo al grill acompañado de arroz, papas fritas, plátano frito y huevos fritos.", "price": 49 },
+        { "id": "ossobuco-a-la-sangiovese", "name": "Ossobuco a la Sangiovese", "description": "Ossobuco con salsa de reducción de Sangiovese acompañado con puré de papas nativas.", "price": 45 }
+      ]
+    },
+    {
+      "id": "lasanas",
+      "name": "Lasañas",
+      "items": [
+        { "id": "lasana-tradicional", "name": "Tradicional", "description": "Capas de pasta fresca, salsa bolognesa, bechamel y queso gratinado al horno.", "price": 35 },
+        { "id": "lasana-napolitana", "name": "Napolitana", "description": "Capas de pasta fresca con salsa napolitana, albóndigas artesanales, bechamel y queso gratinado.", "price": 38 },
+        { "id": "lasana-ossobuco", "name": "Ossobuco", "description": "Nuestra lasaña tradicional rellena de carne de ossobuco con salsa reducida de vino Cabernet Sauvignon.", "price": 48 }
+      ]
+    },
+    {
+      "id": "pizzas",
+      "name": "Pizzas",
+      "sizes": ["Personal", "Familiar"],
+      "notes": [
+        "Todas nuestras pizzas vienen acompañadas con abundante queso mozzarella.",
+        "Pregunta por nuestras medias pizzas."
+      ],
+      "items": [
+        { "id": "super-mediterranea", "name": "Súper Mediterránea", "subtitle": "El Emblema del Caballero", "description": "La especialidad de la casa. Chorizo parrillero, carne molida, lomito ahumado, salame, pepperoni, cabanossi, aceitunas verdes, pimientos glaseados, champiñones y trozos de panceta de cerdo.", "prices": { "Personal": 33, "Familiar": 79 }, "highlight": true },
+        { "id": "hawaiana-especial", "name": "Hawaiana Especial", "description": "Piña, durazno, tocino, chorizo, lomito ahumado.", "prices": { "Personal": 28, "Familiar": 59 } },
+        { "id": "hawaiana", "name": "Hawaiana", "description": "Piña, durazno, chorizo, jamón inglés.", "prices": { "Personal": 26, "Familiar": 54 } },
+        { "id": "americana", "name": "Americana", "description": "Jamón, aceitunas y pimientos.", "prices": { "Personal": 21, "Familiar": 44 } },
+        { "id": "argentina", "name": "Argentina", "description": "Chorizo, aceitunas verdes, pimientos glaseados y bastones de lomo fino.", "prices": { "Personal": 31, "Familiar": 72 } },
+        { "id": "florencia", "name": "Florencia", "description": "Salame y queso edam.", "prices": { "Personal": 24, "Familiar": 49 } },
+        { "id": "pizza-lomo-saltado", "name": "Lomo Saltado", "subtitle": "La Fusión Perfecta", "description": "Jugosos trozos de lomo salteado sobre abundante queso mozzarella.", "prices": { "Personal": 32, "Familiar": 79 } },
+        { "id": "pizza-aji-de-gallina", "name": "Ají de Gallina", "subtitle": "La Recién Llegada", "description": "Nuestra versión en pizza del clásico ají de gallina, con cremosa salsa de ají amarillo, pollo deshilachado y abundante queso mozzarella.", "prices": { "Personal": 38, "Familiar": 75 } }
+      ]
+    },
+    {
+      "id": "la-taberna-del-caballero",
+      "name": "La Taberna del Caballero",
+      "groups": [
+        {
+          "name": "Bebidas Personales",
+          "items": [
+            { "id": "gaseosa-296", "name": "Inka Cola / Coca Cola - 296 ml", "price": 4 },
+            { "id": "gaseosa-600", "name": "Inka Cola / Coca Cola - 600 ml", "price": 6 },
+            { "id": "agua-600", "name": "Agua c/s gas - 600 ml", "price": 4 },
+            { "id": "limonada-clasica", "name": "Limonada Clásica", "price": 13 },
+            { "id": "limonada-especial", "name": "Limonada Especial", "price": 14 }
+          ]
+        },
+        {
+          "name": "Bebidas para Compartir",
+          "note": "Consulta nuestros sabores disponibles.",
+          "items": [
+            { "id": "gaseosa-1500", "name": "Inka Cola / Coca Cola - 1.5 Lt.", "price": 15 },
+            { "id": "limonada-clasica-1l", "name": "Limonada Clásica - 1 Lt.", "price": 19 },
+            { "id": "limonada-especial-1l", "name": "Limonada Especial - 1 Lt.", "price": 22 },
+            { "id": "especiales-temporada-1l", "name": "Especiales de Temporada - 1 Lt.", "price": 24 }
+          ]
+        },
+        {
+          "name": "Cervezas Individuales",
+          "items": [
+            { "id": "cusquena", "name": "Cusqueña", "price": 11 },
+            { "id": "stella-artois", "name": "Stella Artois", "price": 12 },
+            { "id": "corona", "name": "Corona", "price": 12 },
+            { "id": "heineken", "name": "Heineken", "price": 12 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "intro": [
+        "Los mejores momentos merecen un dulce final.",
+        "Descubre nuestra selección de postres y permite que nuestras recomendaciones completen tu experiencia en El Caballero Negro."
+      ],
+      "items": []
+    }
+  ]
+}

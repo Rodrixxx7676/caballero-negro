@@ -1,0 +1,2 @@
+# eb deploy usa el artefacto de deploy/ (ver .elasticbeanstalk/config.yml); nada del código fuente sube.
+*

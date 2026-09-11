@@ -1,0 +1,10 @@
+branch-defaults:
+  main:
+    environment: caballero-negro-prod
+deploy:
+  artifact: deploy/caballero-negro.zip
+global:
+  application_name: caballero-negro
+  default_platform: .NET 10 on AL2023
+  default_region: us-east-1
+  workspace_type: Application

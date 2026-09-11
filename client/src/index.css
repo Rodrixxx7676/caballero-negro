@@ -1,0 +1,467 @@
+/* ---------- Paleta (Support/Códigos de Color.docx + dorado de la carta impresa) ---------- */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --silver: #d3d3d3;
+  --gray: #696969;
+  --gold: #c8892b;
+  --gold-soft: #e0a94f;
+  --surface: #0a0a0a;
+  --line: #1f1f1f;
+
+  --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Garamond, Georgia, serif;
+
+  --measure: 72rem;
+  --nav-height: 3.5rem;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Ornamento: línea dorada con rombo, como en la carta impresa ---------- */
+.ornament {
+  display: block;
+  position: relative;
+  width: min(14rem, 60%);
+  height: 2px;
+  margin: 0.75rem auto;
+  background: var(--gold);
+}
+
+.ornament::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* ---------- Portada ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero__helmet {
+  width: 72px;
+  height: auto;
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.hero__name {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1.05;
+  margin-top: 0.25rem;
+  color: var(--white);
+}
+
+.hero__description {
+  max-width: 34rem;
+  margin-top: 0.5rem;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-size: 1.15rem;
+  color: var(--silver);
+}
+
+.hero__description p + p {
+  margin-top: 0.5rem;
+}
+
+.hero__welcome {
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ---------- Navegación de categorías (fija al hacer scroll) ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: var(--nav-height);
+  padding: 0 1rem;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__helmet {
+  flex: none;
+  width: 28px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.nav__list {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(to right, black 90%, transparent);
+}
+
+.nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__link {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav__link:hover {
+  color: var(--white);
+}
+
+.nav__link--active {
+  color: var(--black);
+  background: var(--gold);
+}
+
+/* ---------- Secciones ---------- */
+.menu {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem;
+}
+
+.category {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.category + .category {
+  border-top: 1px solid var(--line);
+}
+
+.category__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.category__title {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  letter-spacing: 0.04em;
+  font-variant: small-caps;
+}
+
+.category__intro {
+  max-width: 30rem;
+  margin: 0 auto 1rem;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--silver);
+}
+
+.category__intro p + p {
+  margin-top: 0.75rem;
+}
+
+/* ---------- Productos ---------- */
+.items {
+  display: grid;
+  gap: 1.35rem;
+}
+
+@media (min-width: 720px) {
+  .items {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+  }
+}
+
+.items--compact {
+  row-gap: 0.6rem;
+}
+
+.item__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.item__name {
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  font-variant: small-caps;
+  color: var(--gold-soft);
+}
+
+.items--compact .item__name {
+  font-family: var(--font-body);
+  font-variant: normal;
+  font-size: 1.125rem;
+  color: var(--white);
+}
+
+.item__subtitle {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--silver);
+}
+
+.item__leader {
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--gray);
+  transform: translateY(-0.35em);
+}
+
+.item__description {
+  margin-top: 0.3rem;
+  color: var(--silver);
+  line-height: 1.35;
+}
+
+.item--highlight .item__label::after {
+  content: '★';
+  margin-left: 0.4rem;
+  font-size: 0.75em;
+  color: var(--gold);
+}
+
+.price {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.price__currency {
+  font-size: 0.72em;
+  margin-right: 0.15em;
+  color: var(--silver);
+}
+
+/* Pizzas: dos columnas de precio (Personal / Familiar) */
+.category__sizes {
+  display: none;
+}
+
+.item__prices {
+  display: flex;
+  gap: 1rem;
+  flex: none;
+}
+
+.item__price-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 3.6rem;
+}
+
+.item__size {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ---------- Subgrupos (bebidas) y notas ---------- */
+.group {
+  margin-top: 1.75rem;
+}
+
+.group__title {
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.proteins {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.proteins__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.proteins__list li {
+  padding: 0.25rem 0.9rem;
+  border: 1px solid var(--gray);
+  border-radius: 999px;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: var(--silver);
+}
+
+.note {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--silver);
+}
+
+.note--italic {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.note--ribbon {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 1.5rem;
+  background: var(--gold);
+  color: var(--black);
+  font-style: italic;
+  font-weight: 600;
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+}
+
+/* ---------- Pie ---------- */
+.footer {
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+  color: var(--silver);
+  border-top: 1px solid var(--line);
+}
+
+.footer__small {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--gray);
+}
+
+/* ---------- Estados de carga / error ---------- */
+.status {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.3rem;
+  color: var(--silver);
+}
+
+.status__helmet {
+  width: 55px;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.status__detail {
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.status button {
+  padding: 0.6rem 1.5rem;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .status__helmet {
+    animation: none;
+  }
+}

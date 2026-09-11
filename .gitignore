@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Cliente React (el build se copia a wwwroot de la API; no se versiona)
+node_modules/
+client/dist/
+src/CaballeroNegro.Api/wwwroot/
+
+# Paquete de despliegue
+deploy/
+
+# Elastic Beanstalk (estado local del CLI; config.yml sí se versiona)
+.elasticbeanstalk/*
+!.elasticbeanstalk/config.yml
+
+# Sistema / editores
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
