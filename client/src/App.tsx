@@ -41,7 +41,7 @@ export default function App() {
     <>
       <Hero restaurant={restaurant} />
       <CategoryNav categories={categories} activeId={activeId} />
-      <main className="menu">
+      <main className="menu container">
         {categories.map((category) => (
           <CategorySection key={category.id} category={category} currency={restaurant.currency} />
         ))}

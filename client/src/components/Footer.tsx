@@ -4,7 +4,7 @@ interface Props {
 
 export function Footer({ name }: Props) {
   return (
-    <footer className="footer">
+    <footer className="footer container">
       <span className="ornament" aria-hidden="true" />
       <p>
         {name} · Villa El Salvador, Lima

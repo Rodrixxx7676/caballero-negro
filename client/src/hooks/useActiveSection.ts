@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 /**
  * Devuelve el id de la sección visible más cercana al borde superior,
  * para marcar la categoría activa en la navegación.
+ * Se evalúa como máximo una vez por frame para no frenar el scroll.
  */
 export function useActiveSection(ids: string[], offset = 120): string | null {
   const [active, setActive] = useState<string | null>(ids[0] ?? null)
@@ -10,22 +11,29 @@ export function useActiveSection(ids: string[], offset = 120): string | null {
   useEffect(() => {
     if (ids.length === 0) return
 
-    const update = () => {
+    let frame = 0
+
+    const evaluate = () => {
+      frame = 0
       let current = ids[0]
       for (const id of ids) {
         const el = document.getElementById(id)
-        if (!el) continue
-        if (el.getBoundingClientRect().top - offset <= 0) current = id
+        if (el && el.getBoundingClientRect().top - offset <= 0) current = id
       }
-      setActive(current)
+      setActive((prev) => (prev === current ? prev : current))
     }
 
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
+    const schedule = () => {
+      if (frame === 0) frame = requestAnimationFrame(evaluate)
+    }
+
+    evaluate()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
     return () => {
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
+      if (frame !== 0) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
     }
   }, [ids, offset])
 
