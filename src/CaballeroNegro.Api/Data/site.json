@@ -1,0 +1,38 @@
+{
+  "name": "El Caballero Negro",
+  "slogan": "Una nueva fusión mediterránea",
+  "founded": "Hace más de una década",
+  "story": [
+    "Todo comenzó con una kombi Volkswagen. Con un horno a bordo y muchas ganas, salíamos a hacer pizzas cerca de los eventos de Villa El Salvador: fiestas, ferias, cualquier lugar donde hubiera gente con hambre y ganas de algo distinto.",
+    "La receta gustó. Tanto, que la kombi se quedó corta y nació el restaurante: un local con ambientación medieval, inspirado en los torneos de caballeros de antaño, donde la tradición italiana se sienta a la mesa con el sabor peruano.",
+    "Más de diez años después seguimos con la misma misión: innovar y fusionar sabores del mundo con tradición italiana y un toque peruano. Pizzas artesanales, pastas frescas y platos de autor, preparados con insumos locales de calidad.",
+    "Hoy somos un punto de encuentro del sur de Lima. Cada Súper Mediterránea, cada Alfredo Especial y cada pizza de lomo saltado que sale de nuestro horno lleva esa historia."
+  ],
+  "values": [
+    { "title": "Tradición italiana", "text": "Masas de fermentación lenta, salsas de cocción larga y pastas hechas en casa." },
+    { "title": "Sabor peruano", "text": "Huancaína, lomo saltado, ají de gallina y rocoto se cruzan con la cocina mediterránea." },
+    { "title": "Para compartir", "text": "Un ambiente de caballeros y mesas grandes: celebraciones, familia y amigos." }
+  ],
+  "location": {
+    "address": "Av. El Sol, Sector 2, Grupo 16, Mz. A, Lt. 5",
+    "district": "Villa El Salvador, Lima",
+    "reference": "Cruce de Av. El Sol con Av. Los Álamos",
+    "directions": [
+      "A 10 minutos a pie de la estación Parque Industrial (Línea 1 del Metro).",
+      "Desde la estación Matellini del Metropolitano, con el alimentador amarillo.",
+      "Estacionamiento disponible fuera del local."
+    ],
+    "mapQuery": "El Caballero Negro, Av. El Sol, Villa El Salvador, Lima",
+    "hours": [
+      { "days": "Lunes a domingo", "open": "12:00", "close": "23:00" }
+    ]
+  },
+  "contact": {
+    "phones": ["999 026 053", "936 784 996"],
+    "whatsapp": "51999026053",
+    "whatsappMessage": "Hola, El Caballero Negro. Quisiera hacer una consulta.",
+    "instagram": "elcaballeronegro.oficial",
+    "facebook": "elcaballeronegro.official",
+    "tiktok": "elcaballeronegrooficial"
+  }
+}

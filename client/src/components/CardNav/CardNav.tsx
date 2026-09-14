@@ -207,7 +207,14 @@ const CardNav: React.FC<CardNavProps> = ({
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
                 {item.links?.map((lnk, i) => (
-                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
+                  <a
+                    key={`${lnk.label}-${i}`}
+                    className="nav-card-link"
+                    href={lnk.href}
+                    aria-label={lnk.ariaLabel}
+                    target={lnk.href.startsWith('http') ? '_blank' : undefined}
+                    rel={lnk.href.startsWith('http') ? 'noreferrer' : undefined}
+                  >
                     <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {lnk.label}
                   </a>

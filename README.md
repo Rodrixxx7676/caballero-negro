@@ -9,8 +9,11 @@ Salvador (Lima). Fase 1: la carta digital.
   con navegación fija por categorías.
 - **Infraestructura:** un único entorno de AWS Elastic Beanstalk
   (".NET 10 on AL2023", instancia única).
-- **Datos:** la carta vive en [`src/CaballeroNegro.Api/Data/menu.json`](src/CaballeroNegro.Api/Data/menu.json),
-  transcrita de la carta impresa. Cambiar un precio es editar ese archivo y desplegar.
+- **Datos:** la carta vive en [`src/CaballeroNegro.Api/Data/menu.json`](src/CaballeroNegro.Api/Data/menu.json)
+  y los datos del local (historia, dirección, horario, redes) en
+  [`Data/site.json`](src/CaballeroNegro.Api/Data/site.json). Cambiar un precio o
+  el horario es editar el archivo y desplegar; páginas y chatbot leen de ahí.
+- **Páginas:** `/` carta · `/nosotros` historia · `/ubicacion` mapa y horario · `/contacto` redes.
 
 ## Estructura
 
@@ -18,13 +21,15 @@ Salvador (Lima). Fase 1: la carta digital.
 caballero-negro/
 ├── src/CaballeroNegro.Api/     API .NET
 │   ├── Data/menu.json          la carta
+│   ├── Data/site.json          historia, ubicación, horario, redes
 │   ├── Models/Menu.cs          contrato (espejo de client/src/types/menu.ts)
 │   ├── Services/MenuService.cs lectura de la carta (aquí entraría una BD después)
 │   └── Program.cs              endpoints, estáticos y fallback SPA
 ├── client/                     React + Vite
 │   └── src/
 │       ├── api/  hooks/  types/
-│       └── components/         Hero, CategoryNav, CategorySection, MenuItemRow…
+│       ├── pages/              MenuPage, AboutPage, LocationPage, ContactPage
+│       └── components/         CardNav (React Bits), Hero, CategoryNav, ChatWidget…
 ├── scripts/bundle.sh           genera deploy/caballero-negro.zip
 ├── support/                    logo original
 └── .elasticbeanstalk/config.yml
@@ -37,6 +42,7 @@ caballero-negro/
 | GET    | `/api/health`        | `{ "status": "ok" }`                       |
 | GET    | `/api/menu`          | Carta completa (restaurante + categorías)  |
 | GET    | `/api/menu/{id}`     | Una categoría (`pizzas`, `entrantes`…) o 404 |
+| GET    | `/api/site`          | Datos del local: historia, ubicación, horario, contacto |
 | GET    | `/api/chat/status`   | `{ "available": true|false }` según haya clave de OpenAI |
 | POST   | `/api/chat`          | `{ "messages": [{ "role": "user", "content": "…" }] }` → `{ "reply": "…" }` |
 
@@ -110,5 +116,6 @@ el 80. Única variable opcional: `OpenAI__ApiKey` (activa el chatbot).
 
 - Logo en alta resolución o vectorial (el original es de 448 px).
 - Postres: la carta impresa no lista productos.
-- Fotos de platos, dirección, horario, teléfono/WhatsApp y redes.
+- Fotos de platos y del local (historia).
+- Confirmar con el restaurante horario (12:00–23:00 vs 22:30 según fuentes) y teléfonos.
 - Panel de administración con base de datos para editar la carta sin desplegar.

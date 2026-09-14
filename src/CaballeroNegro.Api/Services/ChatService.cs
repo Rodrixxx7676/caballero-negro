@@ -27,12 +27,12 @@ public sealed class ChatService
     private readonly string _systemPrompt;
     private readonly ILogger<ChatService> _logger;
 
-    public ChatService(HttpClient http, IOptions<OpenAiOptions> options, MenuService menu, ILogger<ChatService> logger)
+    public ChatService(HttpClient http, IOptions<OpenAiOptions> options, MenuService menu, SiteService site, ILogger<ChatService> logger)
     {
         _http = http;
         _options = options.Value;
         _logger = logger;
-        _systemPrompt = BuildSystemPrompt(menu.GetMenu());
+        _systemPrompt = BuildSystemPrompt(menu.GetMenu(), site.GetSite());
 
         _http.BaseAddress = new Uri(_options.BaseUrl);
         _http.Timeout = TimeSpan.FromSeconds(30);
@@ -80,17 +80,24 @@ public sealed class ChatService
             : reply;
     }
 
-    /// <summary>La carta completa en texto compacto, para que el modelo responda con precios reales.</summary>
-    private static string BuildSystemPrompt(Menu menu)
+    /// <summary>Carta y datos del local en texto compacto, para que el modelo responda con información real.</summary>
+    private static string BuildSystemPrompt(Menu menu, Site site)
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"Eres el asistente virtual de {menu.Restaurant.Name}, restaurante de pastas y pizzas en Villa El Salvador, Lima (Perú). " +
-                      "Fusión de tradición italiana con sabor peruano, más de diez años de trayectoria.");
+        sb.AppendLine($"Eres el asistente virtual de {site.Name}, restaurante de pastas y pizzas en {site.Location.District} (Perú). " +
+                      "Fusión de tradición italiana con sabor peruano, más de diez años de trayectoria; empezó como una kombi Volkswagen haciendo pizzas en eventos.");
         sb.AppendLine("Responde SIEMPRE en español, con calidez y brevedad (máximo 4 o 5 líneas), como un mozo amable. " +
                       "Usa únicamente la carta de abajo para platos, ingredientes y precios; los precios están en soles (S/.). " +
                       "Si te preguntan por algo que no está en la carta, dilo con honestidad y sugiere una alternativa de la carta. " +
-                      "No tomas pedidos ni reservas ni cobras: para eso invita a escribir por WhatsApp o visitar el local. " +
-                      "No inventes dirección, horario ni teléfono: si te los piden, responde que pronto estarán en la web y que consulten por redes.");
+                      "No tomas pedidos ni reservas ni cobras: para eso invita a escribir por WhatsApp. " +
+                      "Para dirección, horario y contacto usa solo los DATOS DEL LOCAL; no inventes nada más.");
+        sb.AppendLine();
+        sb.AppendLine("DATOS DEL LOCAL:");
+        sb.AppendLine($"- Dirección: {site.Location.Address}, {site.Location.District}. Referencia: {site.Location.Reference}.");
+        foreach (var d in site.Location.Directions) sb.AppendLine($"- Cómo llegar: {d}");
+        foreach (var h in site.Location.Hours) sb.AppendLine($"- Horario: {h.Days}, de {h.Open} a {h.Close}.");
+        sb.AppendLine($"- Teléfonos: {string.Join(" / ", site.Contact.Phones)}. WhatsApp: +{site.Contact.Whatsapp}.");
+        sb.AppendLine($"- Instagram: @{site.Contact.Instagram}. Facebook: {site.Contact.Facebook}. TikTok: @{site.Contact.Tiktok}.");
         sb.AppendLine();
         sb.AppendLine("CARTA:");
 

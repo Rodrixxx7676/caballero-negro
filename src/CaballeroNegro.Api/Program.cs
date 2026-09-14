@@ -13,6 +13,7 @@ if (!string.IsNullOrEmpty(port))
 }
 
 builder.Services.AddSingleton<MenuService>();
+builder.Services.AddSingleton<SiteService>();
 
 // Chatbot: la clave llega por user-secrets (local) o variable OpenAI__ApiKey (Beanstalk).
 builder.Services.Configure<OpenAiOptions>(builder.Configuration.GetSection(OpenAiOptions.Section));
@@ -47,6 +48,8 @@ api.MapGet("/menu/{categoryId}", (string categoryId, MenuService menu) =>
     menu.GetCategory(categoryId) is { } category
         ? Results.Ok(category)
         : Results.NotFound(new { message = $"No existe la categoría '{categoryId}'." }));
+
+api.MapGet("/site", (SiteService site) => Results.Ok(site.GetSite()));
 
 api.MapGet("/chat/status", (ChatService chat) => Results.Ok(new { available = chat.IsAvailable }));
 

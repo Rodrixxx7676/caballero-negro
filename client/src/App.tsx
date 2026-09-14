@@ -1,56 +1,36 @@
-import { useMemo } from 'react'
-import { CategoryNav } from './components/CategoryNav'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ChatWidget } from './components/ChatWidget'
-import { CategorySection } from './components/CategorySection'
 import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
+import { ScrollToTop } from './components/ScrollToTop'
 import { SiteNav } from './components/SiteNav'
-import { useActiveSection } from './hooks/useActiveSection'
-import { useMenu } from './hooks/useMenu'
+import { Status } from './components/Status'
+import { useSite } from './hooks/useSite'
+import { AboutPage } from './pages/AboutPage'
+import { ContactPage } from './pages/ContactPage'
+import { LocationPage } from './pages/LocationPage'
+import { MenuPage } from './pages/MenuPage'
 
 export default function App() {
-  const state = useMenu()
-  const ids = useMemo(
-    () => (state.status === 'ready' ? state.menu.categories.map((c) => c.id) : []),
-    [state],
-  )
-  const activeId = useActiveSection(ids)
+  const state = useSite()
 
-  if (state.status === 'loading') {
-    return (
-      <main className="status">
-        <img src="/helmet.png" alt="" width="55" height="89" className="status__helmet" />
-        <p>Preparando la carta…</p>
-      </main>
-    )
-  }
+  if (state.status === 'loading') return <Status />
+  if (state.status === 'error') return <Status message={state.message} error />
 
-  if (state.status === 'error') {
-    return (
-      <main className="status">
-        <p>No pudimos cargar la carta.</p>
-        <p className="status__detail">{state.message}</p>
-        <button type="button" onClick={() => window.location.reload()}>
-          Reintentar
-        </button>
-      </main>
-    )
-  }
-
-  const { restaurant, categories } = state.menu
+  const { site } = state
 
   return (
-    <>
-      <SiteNav />
-      <Hero restaurant={restaurant} />
-      <CategoryNav categories={categories} activeId={activeId} />
-      <main className="menu container">
-        {categories.map((category) => (
-          <CategorySection key={category.id} category={category} currency={restaurant.currency} />
-        ))}
-      </main>
-      <Footer name={restaurant.name} />
+    <BrowserRouter>
+      <ScrollToTop />
+      <SiteNav site={site} />
+      <Routes>
+        <Route path="/" element={<MenuPage />} />
+        <Route path="/nosotros" element={<AboutPage site={site} />} />
+        <Route path="/ubicacion" element={<LocationPage site={site} />} />
+        <Route path="/contacto" element={<ContactPage site={site} />} />
+        <Route path="*" element={<MenuPage />} />
+      </Routes>
+      <Footer site={site} />
       <ChatWidget />
-    </>
+    </BrowserRouter>
   )
 }
