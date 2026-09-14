@@ -3,6 +3,7 @@ import { CategoryNav } from './components/CategoryNav'
 import { CategorySection } from './components/CategorySection'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
+import { SiteNav } from './components/SiteNav'
 import { useActiveSection } from './hooks/useActiveSection'
 import { useMenu } from './hooks/useMenu'
 
@@ -39,6 +40,7 @@ export default function App() {
 
   return (
     <>
+      <SiteNav />
       <Hero restaurant={restaurant} />
       <CategoryNav categories={categories} activeId={activeId} />
       <main className="menu container">

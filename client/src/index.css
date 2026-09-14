@@ -79,6 +79,35 @@ img {
   padding-inline: var(--gutter);
 }
 
+/* ---------- Card Nav (React Bits): toques de identidad ---------- */
+.card-nav {
+  border-color: rgba(200, 137, 43, 0.35);
+}
+
+.card-nav .logo {
+  height: 34px;
+}
+
+.nav-card-label,
+.card-nav-cta-button {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.nav-card-label {
+  font-size: 1.15rem;
+}
+
+.card-nav-cta-button {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.nav-card-link {
+  font-size: 1.05rem;
+  color: inherit; /* hereda el color de la tarjeta, no el azul/lila del navegador */
+}
+
 /* ---------- Ornamento: línea dorada con rombo, como en la carta impresa ---------- */
 .ornament {
   display: block;
@@ -106,7 +135,7 @@ img {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-block: 2.5rem 2rem;
+  padding-block: 6.5rem 2rem; /* deja sitio a la tarjeta de navegación flotante */
   border-bottom: 1px solid var(--line);
 }
 
@@ -474,7 +503,7 @@ img {
   }
 
   .hero {
-    padding-block: 3rem 2.5rem;
+    padding-block: 7.5rem 2.5rem;
   }
 
   .hero__helmet {
