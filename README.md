@@ -37,9 +37,28 @@ caballero-negro/
 | GET    | `/api/health`        | `{ "status": "ok" }`                       |
 | GET    | `/api/menu`          | Carta completa (restaurante + categorías)  |
 | GET    | `/api/menu/{id}`     | Una categoría (`pizzas`, `entrantes`…) o 404 |
+| GET    | `/api/chat/status`   | `{ "available": true|false }` según haya clave de OpenAI |
+| POST   | `/api/chat`          | `{ "messages": [{ "role": "user", "content": "…" }] }` → `{ "reply": "…" }` |
 
 Toda categoría trae `items`; las bebidas además traen `groups`; las pizzas
 traen `sizes` y cada ítem `prices` por tamaño en vez de `price`.
+
+## Chatbot (OpenAI)
+
+Asistente de la carta en la esquina inferior derecha. Modelo económico
+(`gpt-4.1-mini` por defecto, cambiable en `appsettings.json` → `OpenAI:Model`).
+La carta completa va como contexto del sistema, así responde con precios reales.
+Límite: 10 mensajes por minuto por IP (`/api/chat` devuelve 429 al pasarse).
+
+**La clave nunca se escribe en el repo.** Sin clave, el botón del chat no aparece.
+
+```bash
+# Local (una sola vez; queda fuera del repo, en ~/.microsoft/usersecrets)
+dotnet user-secrets set "OpenAI:ApiKey" "sk-..." --project src/CaballeroNegro.Api
+```
+
+En Beanstalk: Configuración → Actualizaciones, supervisión y registro →
+Propiedades del entorno → `OpenAI__ApiKey` = `sk-...` (dos guiones bajos).
 
 ## Desarrollo local
 
@@ -85,7 +104,7 @@ eb create caballero-negro-prod --instance-types t3.micro --single
 `deploy/caballero-negro.zip`; sin eso `eb deploy` subiría el código fuente.
 
 La app lee la variable `PORT` que inyecta Beanstalk (5000) y nginx la expone en
-el 80. No hay variables de entorno obligatorias.
+el 80. Única variable opcional: `OpenAI__ApiKey` (activa el chatbot).
 
 ## Pendientes / siguientes fases
 

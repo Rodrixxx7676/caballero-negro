@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { CategoryNav } from './components/CategoryNav'
+import { ChatWidget } from './components/ChatWidget'
 import { CategorySection } from './components/CategorySection'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
@@ -49,6 +50,7 @@ export default function App() {
         ))}
       </main>
       <Footer name={restaurant.name} />
+      <ChatWidget />
     </>
   )
 }

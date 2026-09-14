@@ -35,3 +35,4 @@ jobs:
           for i in $(seq 1 20); do curl -sf localhost:5080/api/health && break; sleep 1; done
           curl -sf localhost:5080/api/menu | python3 -c "import json,sys; d=json.load(sys.stdin); assert len(d['categories']) == 9, d"
           curl -sf localhost:5080/ | grep -q '<div id="root">'
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST localhost:5080/api/chat -H 'content-type: application/json' -d '{"messages":[{"role":"user","content":"hola"}]}')" = "503"
